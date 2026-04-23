@@ -3,21 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>diwa wellness</title>
+  <title>Diwa Wellness</title>
   <style>
     :root {
-      --linen: #f4efe7;
-      --sand: #ddd1c0;
-      --clay: #b89273;
-      --terracotta: #9f654a;
-      --earth: #79624f;
-      --olive: #66705d;
-      --ink: #3f382f;
-      --bone: #fbf8f2;
-      --shadow: rgba(67, 50, 38, 0.12);
+      --bg: #e8e0d6;
+      --bg-soft: #efe8df;
+      --panel: #ebe3d9;
+      --panel-deeper: #e1d7ca;
+      --text: #69533f;
+      --text-soft: #7b6654;
+      --accent: #bf7643;
+      --accent-deep: #a86233;
+      --line: rgba(105, 83, 63, 0.16);
+      --olive: #988f71;
+      --shadow: 0 18px 40px rgba(87, 64, 45, 0.08);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -26,11 +30,15 @@
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      background: linear-gradient(180deg, #f7f2ea 0%, #f3ede2 48%, #efe6d8 100%);
-      color: var(--ink);
-      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     a {
@@ -38,293 +46,83 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .site-shell {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
+    .page {
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
     .topbar {
+      background: rgba(236, 228, 218, 0.96);
+      border-bottom: 1px solid rgba(105, 83, 63, 0.08);
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(14px);
-      background: rgba(247, 242, 234, 0.82);
-      border-bottom: 1px solid rgba(121, 98, 79, 0.14);
+      backdrop-filter: blur(10px);
     }
 
     .topbar-inner {
+      width: min(1400px, calc(100% - 56px));
+      margin: 0 auto;
+      min-height: 122px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 0;
-      gap: 20px;
+      gap: 24px;
     }
 
-    .brand {
-      display: flex;
+    .logo {
+      display: inline-flex;
       flex-direction: column;
-      gap: 2px;
-      letter-spacing: 0.08em;
-      text-transform: lowercase;
+      align-items: flex-start;
+      line-height: 0.9;
     }
 
-    .brand-mark {
-      font-size: 0.76rem;
-      color: var(--terracotta);
+    .logo-title {
+      font-size: clamp(2.3rem, 3vw, 3.5rem);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-weight: 500;
     }
 
-    .brand-name {
-      font-size: 1.1rem;
-      color: var(--ink);
+    .logo-sub {
+      margin-top: 6px;
+      font-size: clamp(1.1rem, 1.4vw, 1.8rem);
+      font-style: italic;
+      color: var(--text-soft);
     }
 
     .nav {
       display: flex;
-      gap: 18px;
       align-items: center;
-      font-size: 0.95rem;
-      color: rgba(63, 56, 47, 0.82);
+      gap: 34px;
+      font-size: 0.98rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      color: var(--text-soft);
+      transition: color 0.2s ease;
     }
 
     .nav a:hover,
     .nav a:focus-visible,
-    .footer a:hover,
-    .footer a:focus-visible,
-    .secondary-link:hover,
-    .secondary-link:focus-visible {
-      color: var(--terracotta);
-    }
-
-    .hero {
-      padding: 72px 0 44px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 42px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 18px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(159, 101, 74, 0.09);
-      color: var(--terracotta);
-      font-size: 0.76rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    h1, h2, h3, p {
-      margin-top: 0;
-    }
-
-    h1 {
-      font-size: clamp(2.8rem, 5vw, 5.1rem);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
-      font-weight: 500;
-    }
-
-    .hero p {
-      font-size: 1.06rem;
-      max-width: 38rem;
-      color: rgba(63, 56, 47, 0.83);
-      margin-bottom: 0;
-    }
-
-    .hero-card {
-      position: relative;
-      border-radius: 34px;
-      overflow: hidden;
-      box-shadow: 0 26px 60px var(--shadow);
-      min-height: 640px;
-      background:
-        linear-gradient(180deg, rgba(68, 51, 39, 0.06), rgba(68, 51, 39, 0.12)),
-        url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-    }
-
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(244, 239, 231, 0.04) 0%, rgba(63, 56, 47, 0.26) 100%);
-    }
-
-    .hero-card-note {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 24px;
-      z-index: 1;
-      padding: 18px 20px;
-      border-radius: 22px;
-      background: rgba(247, 242, 234, 0.74);
-      border: 1px solid rgba(247, 242, 234, 0.5);
-      backdrop-filter: blur(12px);
-      color: var(--ink);
-    }
-
-    .hero-card-note strong {
-      display: block;
-      font-size: 0.95rem;
-      margin-bottom: 4px;
-      font-weight: 500;
-    }
-
-    .hero-card-note span {
-      font-size: 0.92rem;
-      color: rgba(63, 56, 47, 0.76);
-    }
-
-    .section {
-      padding: 38px 0;
-    }
-
-    .section-intro {
-      max-width: 42rem;
-      margin-bottom: 26px;
-    }
-
-    .section-intro h2 {
-      font-size: clamp(2rem, 3vw, 3rem);
-      line-height: 1.03;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-
-    .section-intro p {
-      color: rgba(63, 56, 47, 0.8);
-      font-size: 1rem;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 20px;
-    }
-
-    .gallery-stack {
-      display: grid;
-      gap: 20px;
-    }
-
-    .frame {
-      border-radius: 28px;
-      overflow: hidden;
-      background: var(--bone);
-      box-shadow: 0 18px 38px rgba(67, 50, 38, 0.08);
-      border: 1px solid rgba(121, 98, 79, 0.09);
-    }
-
-    .frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .frame.large {
-      min-height: 620px;
-    }
-
-    .frame.medium {
-      min-height: 300px;
-    }
-
-    .quote-band {
-      padding: 40px 0 18px;
-    }
-
-    .quote-card {
-      border-radius: 32px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.5), rgba(221,209,192,0.35));
-      border: 1px solid rgba(121, 98, 79, 0.12);
-      padding: 34px;
-      box-shadow: 0 16px 30px rgba(67, 50, 38, 0.06);
-    }
-
-    .quote-card p {
-      font-size: clamp(1.35rem, 2.2vw, 2rem);
-      line-height: 1.35;
-      margin: 0;
-      max-width: 38rem;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .service-card {
-      padding: 24px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.48);
-      border: 1px solid rgba(121, 98, 79, 0.12);
-      box-shadow: 0 12px 24px rgba(67, 50, 38, 0.05);
-    }
-
-    .service-card h3 {
-      font-size: 1.08rem;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-
-    .service-card p {
-      color: rgba(63, 56, 47, 0.78);
-      font-size: 0.96rem;
-      margin-bottom: 0;
-    }
-
-    .contact-panel {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
-      align-items: center;
-      padding: 28px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(159,101,74,0.13), rgba(102,112,93,0.08));
-      border: 1px solid rgba(121, 98, 79, 0.12);
-      box-shadow: 0 16px 28px rgba(67, 50, 38, 0.05);
-    }
-
-    .contact-panel h2 {
-      font-size: clamp(1.9rem, 2.5vw, 2.6rem);
-      line-height: 1.05;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-
-    .contact-panel p {
-      margin-bottom: 0;
-      color: rgba(63, 56, 47, 0.8);
-    }
-
-    .button-group {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+    .footer-link:hover,
+    .footer-link:focus-visible {
+      color: var(--accent-deep);
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 12px 18px;
       border-radius: 999px;
-      font-size: 0.95rem;
-      transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.88rem;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+      cursor: pointer;
+      white-space: nowrap;
     }
 
     .button:hover,
@@ -333,232 +131,578 @@
     }
 
     .button-primary {
-      background: var(--ink);
-      color: var(--bone);
-      border: 1px solid var(--ink);
+      background: var(--accent);
+      color: #fff8f1;
+      padding: 18px 34px;
+      box-shadow: 0 10px 24px rgba(191, 118, 67, 0.2);
     }
 
     .button-primary:hover,
     .button-primary:focus-visible {
-      background: #51483e;
-      border-color: #51483e;
+      background: var(--accent-deep);
     }
 
-    .button-secondary {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid rgba(63, 56, 47, 0.22);
+    .hero {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      min-height: calc(100vh - 122px);
+      background: linear-gradient(180deg, #eae1d7 0%, #e6ddd2 100%);
     }
 
-    .button-secondary:hover,
-    .button-secondary:focus-visible {
-      border-color: rgba(159, 101, 74, 0.45);
-      color: var(--terracotta);
-    }
-
-    .footer {
-      padding: 26px 0 56px;
-      color: rgba(63, 56, 47, 0.74);
-      font-size: 0.95rem;
-    }
-
-    .footer-inner {
+    .hero-copy {
+      padding: 10vh 5vw 8vh 6vw;
       display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      padding-top: 20px;
-      border-top: 1px solid rgba(121, 98, 79, 0.12);
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(239, 232, 223, 0.95), rgba(235, 226, 214, 0.95));
+      position: relative;
+      z-index: 1;
     }
 
-    .field-notes-link {
-      color: var(--terracotta);
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(3.2rem, 6vw, 5.8rem);
+      line-height: 0.96;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      max-width: 7ch;
+    }
+
+    .hero-rule {
+      width: 95px;
+      height: 2px;
+      background: rgba(191, 118, 67, 0.65);
+      margin: 38px 0 26px;
+    }
+
+    .hero-copy p {
+      margin: 0 0 34px;
+      max-width: 260px;
+      font-size: 1.02rem;
+      line-height: 1.9;
+      color: var(--text-soft);
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 720px;
+      overflow: hidden;
+      background: #d9cab8;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .value-strip {
+      background: #e6ddd2;
+      border-top: 1px solid rgba(105, 83, 63, 0.06);
+      border-bottom: 1px solid rgba(105, 83, 63, 0.06);
+    }
+
+    .value-grid {
+      width: min(1240px, calc(100% - 56px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .value-card {
+      text-align: center;
+      padding: 44px 28px 48px;
+      position: relative;
+    }
+
+    .value-card:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 22%;
+      width: 1px;
+      height: 56%;
+      background: var(--line);
+    }
+
+    .icon {
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      color: #a28f65;
+    }
+
+    .icon svg {
+      width: 44px;
+      height: 44px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .value-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.12rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .value-card p {
+      margin: 0 auto;
+      max-width: 280px;
+      font-size: 0.96rem;
+      line-height: 1.7;
+      color: var(--text-soft);
+    }
+
+    .welcome {
+      position: relative;
+      padding: 88px 0 92px;
+      background:
+        linear-gradient(rgba(246, 240, 233, 0.9), rgba(246, 240, 233, 0.92)),
+        radial-gradient(circle at center, rgba(255,255,255,0.5), rgba(232, 224, 214, 0.15));
+      overflow: hidden;
+    }
+
+    .welcome-inner {
+      width: min(1240px, calc(100% - 56px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px 1fr 280px;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .botanical,
+    .bowl-scene {
+      opacity: 0.82;
+    }
+
+    .botanical {
+      position: relative;
+      min-height: 280px;
+    }
+
+    .stem,
+    .leaf {
+      position: absolute;
+      border-radius: 999px;
+      border: 1.6px solid rgba(138, 121, 90, 0.55);
+      background: rgba(175, 162, 124, 0.08);
+    }
+
+    .stem.main {
+      width: 2px;
+      height: 285px;
+      left: 78px;
+      bottom: -4px;
+      border: none;
+      background: rgba(138, 121, 90, 0.65);
+      transform: rotate(8deg);
+      transform-origin: bottom center;
+    }
+
+    .stem.branch-1,
+    .stem.branch-2,
+    .stem.branch-3,
+    .stem.branch-4,
+    .stem.branch-5 {
+      height: 2px;
+      background: rgba(138, 121, 90, 0.55);
+      border: none;
+      transform-origin: left center;
+    }
+
+    .stem.branch-1 { width: 78px; left: 82px; bottom: 220px; transform: rotate(-58deg); }
+    .stem.branch-2 { width: 72px; left: 82px; bottom: 170px; transform: rotate(-42deg); }
+    .stem.branch-3 { width: 78px; left: 82px; bottom: 112px; transform: rotate(-26deg); }
+    .stem.branch-4 { width: 66px; left: 28px; bottom: 170px; transform: rotate(228deg); }
+    .stem.branch-5 { width: 70px; left: 18px; bottom: 106px; transform: rotate(208deg); }
+
+    .leaf {
+      width: 34px;
+      height: 86px;
+      background: rgba(168, 154, 120, 0.12);
+    }
+
+    .leaf.l1 { left: 120px; bottom: 210px; transform: rotate(30deg); }
+    .leaf.l2 { left: 116px; bottom: 160px; transform: rotate(20deg); }
+    .leaf.l3 { left: 110px; bottom: 102px; transform: rotate(12deg); }
+    .leaf.l4 { left: 8px; bottom: 166px; transform: rotate(-38deg); }
+    .leaf.l5 { left: 2px; bottom: 104px; transform: rotate(-28deg); }
+    .leaf.l6 { left: 38px; bottom: 232px; transform: rotate(-18deg); }
+
+    .welcome-copy h3 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: clamp(2rem, 3vw, 3.3rem);
+      line-height: 1.4;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .welcome-rule {
+      width: 78px;
+      height: 2px;
+      background: rgba(191, 118, 67, 0.72);
+      margin: 26px 0 16px;
+    }
+
+    .welcome-script {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 3.2rem);
       font-style: italic;
+      color: var(--text);
+      letter-spacing: 0.01em;
     }
 
-    .secondary-link {
-      color: rgba(63, 56, 47, 0.84);
+    .bowl-scene {
+      position: relative;
+      min-height: 255px;
     }
 
-    @media (max-width: 980px) {
-      .hero-grid,
-      .gallery,
-      .services,
-      .contact-panel {
+    .pedestal {
+      position: absolute;
+      right: 18px;
+      bottom: 0;
+      width: 210px;
+      height: 108px;
+      background: linear-gradient(180deg, #dbc9b4, #cbb39a);
+      border-radius: 8px 8px 0 0;
+      box-shadow: var(--shadow);
+    }
+
+    .tray {
+      position: absolute;
+      right: 132px;
+      bottom: 72px;
+      width: 112px;
+      height: 60px;
+      background: linear-gradient(180deg, #b58d62, #9b744c);
+      border-radius: 8px;
+      transform: skewX(-9deg);
+      box-shadow: 0 8px 18px rgba(87, 64, 45, 0.12);
+    }
+
+    .bowl-large,
+    .bowl-small {
+      position: absolute;
+      border-radius: 50% 50% 42% 42%;
+      box-shadow: 0 10px 18px rgba(87, 64, 45, 0.12);
+    }
+
+    .bowl-large {
+      right: 72px;
+      bottom: 54px;
+      width: 112px;
+      height: 78px;
+      background: radial-gradient(circle at 35% 30%, #d5b17b, #9c6f3e 78%);
+      transform: rotate(-6deg);
+    }
+
+    .bowl-small {
+      right: 0;
+      bottom: 92px;
+      width: 118px;
+      height: 95px;
+      background: radial-gradient(circle at 42% 30%, #edd9bf, #ceb391 78%);
+    }
+
+    .bottom-link {
+      background: #e4dbd1;
+      border-top: 1px solid rgba(105, 83, 63, 0.08);
+    }
+
+    .bottom-link-inner {
+      width: min(1240px, calc(100% - 56px));
+      margin: 0 auto;
+      min-height: 124px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .macaron-mark {
+      width: 70px;
+      height: 70px;
+      display: grid;
+      place-items: center;
+      color: #b78867;
+    }
+
+    .macaron-mark svg {
+      width: 52px;
+      height: 52px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .bottom-link-copy {
+      font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+      line-height: 1.6;
+      color: var(--text-soft);
+    }
+
+    .bottom-link-copy strong {
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .footer-link {
+      color: var(--accent-deep);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .arrow {
+      font-size: 2rem;
+      color: var(--text);
+      opacity: 0.8;
+      padding-right: 6px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero {
         grid-template-columns: 1fr;
       }
 
-      .hero-card {
-        min-height: 500px;
+      .hero-copy {
+        order: 2;
+        padding: 64px 28px 54px;
       }
 
-      .frame.large,
-      .frame.medium {
-        min-height: 340px;
+      .hero-copy h1,
+      .hero-copy p {
+        max-width: none;
       }
 
-      .button-group {
-        justify-content: flex-start;
+      .hero-media {
+        order: 1;
+        min-height: 60vh;
+      }
+
+      .welcome-inner {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .botanical,
+      .bowl-scene {
+        display: none;
       }
     }
 
-    @media (max-width: 720px) {
-      .site-shell {
-        width: min(100% - 24px, 1120px);
+    @media (max-width: 900px) {
+      .topbar-inner,
+      .value-grid,
+      .welcome-inner,
+      .bottom-link-inner {
+        width: min(100% - 32px, 1240px);
       }
 
       .topbar-inner {
+        min-height: auto;
+        padding: 18px 0;
         flex-direction: column;
         align-items: flex-start;
       }
 
       .nav {
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 18px 22px;
       }
 
-      .hero {
-        padding-top: 42px;
+      .value-grid {
+        grid-template-columns: 1fr;
       }
 
-      .quote-card,
-      .service-card,
-      .contact-panel {
-        padding: 22px;
+      .value-card:not(:last-child)::after {
+        display: none;
+      }
+
+      .value-card {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .value-card:last-child {
+        border-bottom: none;
+      }
+
+      .bottom-link-inner {
+        grid-template-columns: 1fr;
+        text-align: left;
+        padding: 28px 0;
+      }
+
+      .arrow {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .button-primary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.5rem, 13vw, 4rem);
+      }
+
+      .welcome {
+        padding: 64px 0 68px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="site-shell topbar-inner">
-      <a href="#top" class="brand" aria-label="diwa wellness home">
-        <span class="brand-mark">rest · ritual · return</span>
-        <span class="brand-name">diwa wellness</span>
-      </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#space">the space</a>
-        <a href="#offerings">offerings</a>
-        <a href="#visit">visit</a>
-      </nav>
-    </div>
-  </header>
+  <div class="page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a href="#top" class="logo" aria-label="Diwa Wellness home">
+          <span class="logo-title">DIWA</span>
+          <span class="logo-sub">wellness</span>
+        </a>
 
-  <main id="top">
-    <section class="hero">
-      <div class="site-shell hero-grid">
-        <div>
-          <span class="eyebrow">small sacred space · martinsville, new jersey</span>
-          <h1>a soft place to land.</h1>
-          <p>
-            diwa is an intimate wellness studio shaped by warmth, quiet, texture, and care.
-            a space for nervous system exhale, grounded ritual, and gentle return to self.
-          </p>
-        </div>
-        <div class="hero-card" role="img" aria-label="Warm, earth-toned wellness space with linen textures and natural light.">
-          <div class="hero-card-note">
-            <strong>nothing to achieve, nothing to prove.</strong>
-            <span>just a slower room, softer light, and space to come back to yourself.</span>
-          </div>
-        </div>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#offerings">Offerings</a>
+          <a href="#studio">Studio</a>
+          <a href="#contact">Contact</a>
+          <a href="#contact" class="button button-primary">Book a Session</a>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <section class="quote-band">
-      <div class="site-shell">
-        <div class="quote-card">
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>a space to return to yourself</h1>
+          <div class="hero-rule"></div>
           <p>
-            designed with clay tones, linen light, wood warmth, and a quietly held presence.
+            restorative bodywork rooted in presence, intention &amp; care.
           </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="space">
-      <div class="site-shell">
-        <div class="section-intro">
-          <h2>the studio</h2>
-          <p>
-            diwa draws from wabi sabi softness and elemental simplicity — draped fabric overhead,
-            earth-toned textiles, natural wood, and a calm that feels lived in rather than polished.
-          </p>
-        </div>
-
-        <div class="gallery">
-          <figure class="frame large">
-            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1400&q=80" alt="Serene wellness interior with soft curtains and warm natural materials." />
-          </figure>
-          <div class="gallery-stack">
-            <figure class="frame medium">
-              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80" alt="Textural natural decor in warm neutral tones." />
-            </figure>
-            <figure class="frame medium">
-              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Minimal earth-toned room with linen and wood details." />
-            </figure>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="offerings">
-      <div class="site-shell">
-        <div class="section-intro">
-          <h2>what diwa holds</h2>
-          <p>
-            offerings can be shaped simply and intentionally, with language that stays open, grounded,
-            and respectful of each person’s own way of relating.
-          </p>
-        </div>
-
-        <div class="services">
-          <article class="service-card">
-            <h3>reiki sessions</h3>
-            <p>
-              gentle energetic support in a quiet, private setting intended to help the body soften and settle.
-            </p>
-          </article>
-          <article class="service-card">
-            <h3>restorative space</h3>
-            <p>
-              more than a treatment room — a place where environment, pacing, and attention are part of the offering.
-            </p>
-          </article>
-          <article class="service-card">
-            <h3>small ritual touches</h3>
-            <p>
-              warm textures, simple objects, and grounded sensory details that make the experience feel held.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="visit">
-      <div class="site-shell">
-        <div class="contact-panel">
           <div>
-            <h2>come by when you're ready.</h2>
-            <p>
-              whether you're curious, called, or simply in need of a softer hour, diwa welcomes you gently.
-            </p>
-          </div>
-          <div class="button-group">
-            <a class="button button-primary" href="mailto:studio@diwa.life">studio@diwa.life</a>
-            <a class="button button-secondary" href="#top">back to top</a>
+            <a href="#contact" class="button button-primary">Book a Session</a>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <footer class="footer">
-    <div class="site-shell footer-inner">
-      <div>diwa wellness</div>
-      <div>
-        also from diwa: <a class="field-notes-link" href="https://fieldnotesbakery.com" target="_blank" rel="noopener noreferrer">field notes bakery</a>,
-        a quiet little macaron bakery.
+        <div class="hero-media" id="studio">
+          <img src="reiki-space.png" alt="Diwa Wellness studio interior with warm terracotta drapery, soft linens, natural wood, and treatment table." />
+        </div>
+      </section>
+
+      <section class="value-strip" id="offerings">
+        <div class="value-grid">
+          <article class="value-card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <path d="M24 42C16 35 12 26 12 10c8 2 11 5 12 10 1-5 4-8 12-10 0 16-4 25-12 32Z"></path>
+                <path d="M24 41V18"></path>
+              </svg>
+            </div>
+            <h2>Restore</h2>
+            <p>Release tension and come back to balance.</p>
+          </article>
+
+          <article class="value-card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <path d="M8 18c5 0 5-4 10-4s5 4 10 4 5-4 10-4 5 4 10 4"></path>
+                <path d="M8 30c5 0 5-4 10-4s5 4 10 4 5-4 10-4 5 4 10 4"></path>
+              </svg>
+            </div>
+            <h2>Reconnect</h2>
+            <p>Reclaim presence in your body and breath.</p>
+          </article>
+
+          <article class="value-card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="9"></circle>
+                <path d="M24 4v7"></path>
+                <path d="M24 37v7"></path>
+                <path d="M4 24h7"></path>
+                <path d="M37 24h7"></path>
+                <path d="M10 10l5 5"></path>
+                <path d="M33 33l5 5"></path>
+                <path d="M10 38l5-5"></path>
+                <path d="M33 15l5-5"></path>
+              </svg>
+            </div>
+            <h2>Rejuvenate</h2>
+            <p>Nourish your well-being from the inside out.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="welcome" id="about">
+        <div class="welcome-inner">
+          <div class="botanical" aria-hidden="true">
+            <div class="stem main"></div>
+            <div class="stem branch-1"></div>
+            <div class="stem branch-2"></div>
+            <div class="stem branch-3"></div>
+            <div class="stem branch-4"></div>
+            <div class="stem branch-5"></div>
+            <div class="leaf l1"></div>
+            <div class="leaf l2"></div>
+            <div class="leaf l3"></div>
+            <div class="leaf l4"></div>
+            <div class="leaf l5"></div>
+            <div class="leaf l6"></div>
+          </div>
+
+          <div class="welcome-copy">
+            <h3>Diwa Wellness is a small studio offering personalized bodywork in a calm, supportive space.</h3>
+            <div class="welcome-rule"></div>
+            <p class="welcome-script">you’re welcome here.</p>
+          </div>
+
+          <div class="bowl-scene" aria-hidden="true">
+            <div class="pedestal"></div>
+            <div class="tray"></div>
+            <div class="bowl-large"></div>
+            <div class="bowl-small"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bottom-link" id="contact">
+      <div class="bottom-link-inner">
+        <div class="macaron-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <path d="M17 24c3-5 10-8 15-8s12 3 15 8"></path>
+            <path d="M14 28c3 4 11 6 18 6s15-2 18-6"></path>
+            <path d="M15 39c3 5 10 9 17 9s14-4 17-9"></path>
+            <path d="M14 30h36"></path>
+            <path d="M16 34c3 2 8 3 16 3s13-1 16-3"></path>
+            <path d="M17 40h30"></path>
+            <path d="M18 22c-2 2-4 4-4 7"></path>
+            <path d="M46 22c2 2 4 4 4 7"></path>
+          </svg>
+        </div>
+
+        <div class="bottom-link-copy">
+          <strong>also from diwa:</strong>
+          <a class="footer-link" href="https://fieldnotesbakery.com" target="_blank" rel="noopener noreferrer">field notes bakery</a>,
+          a quiet little macaron bakery.
+        </div>
+
+        <div class="arrow" aria-hidden="true">→</div>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 </body>
 </html>
