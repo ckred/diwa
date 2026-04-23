@@ -97,4 +97,468 @@
     .footer a:focus-visible,
     .secondary-link:hover,
     .secondary-link:focus-visible {
-      c
+      color: var(--terracotta);
+    }
+
+    .hero {
+      padding: 72px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(159, 101, 74, 0.09);
+      color: var(--terracotta);
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 5vw, 5.1rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .hero p {
+      font-size: 1.06rem;
+      max-width: 38rem;
+      color: rgba(63, 56, 47, 0.83);
+      margin-bottom: 0;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: 0 26px 60px var(--shadow);
+      min-height: 640px;
+      background:
+        linear-gradient(180deg, rgba(68, 51, 39, 0.06), rgba(68, 51, 39, 0.12)),
+        url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(244, 239, 231, 0.04) 0%, rgba(63, 56, 47, 0.26) 100%);
+    }
+
+    .hero-card-note {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 1;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(247, 242, 234, 0.74);
+      border: 1px solid rgba(247, 242, 234, 0.5);
+      backdrop-filter: blur(12px);
+      color: var(--ink);
+    }
+
+    .hero-card-note strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .hero-card-note span {
+      font-size: 0.92rem;
+      color: rgba(63, 56, 47, 0.76);
+    }
+
+    .section {
+      padding: 38px 0;
+    }
+
+    .section-intro {
+      max-width: 42rem;
+      margin-bottom: 26px;
+    }
+
+    .section-intro h2 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.03;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .section-intro p {
+      color: rgba(63, 56, 47, 0.8);
+      font-size: 1rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 20px;
+    }
+
+    .gallery-stack {
+      display: grid;
+      gap: 20px;
+    }
+
+    .frame {
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--bone);
+      box-shadow: 0 18px 38px rgba(67, 50, 38, 0.08);
+      border: 1px solid rgba(121, 98, 79, 0.09);
+    }
+
+    .frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .frame.large {
+      min-height: 620px;
+    }
+
+    .frame.medium {
+      min-height: 300px;
+    }
+
+    .quote-band {
+      padding: 40px 0 18px;
+    }
+
+    .quote-card {
+      border-radius: 32px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.5), rgba(221,209,192,0.35));
+      border: 1px solid rgba(121, 98, 79, 0.12);
+      padding: 34px;
+      box-shadow: 0 16px 30px rgba(67, 50, 38, 0.06);
+    }
+
+    .quote-card p {
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      margin: 0;
+      max-width: 38rem;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(121, 98, 79, 0.12);
+      box-shadow: 0 12px 24px rgba(67, 50, 38, 0.05);
+    }
+
+    .service-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .service-card p {
+      color: rgba(63, 56, 47, 0.78);
+      font-size: 0.96rem;
+      margin-bottom: 0;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(159,101,74,0.13), rgba(102,112,93,0.08));
+      border: 1px solid rgba(121, 98, 79, 0.12);
+      box-shadow: 0 16px 28px rgba(67, 50, 38, 0.05);
+    }
+
+    .contact-panel h2 {
+      font-size: clamp(1.9rem, 2.5vw, 2.6rem);
+      line-height: 1.05;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .contact-panel p {
+      margin-bottom: 0;
+      color: rgba(63, 56, 47, 0.8);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: var(--ink);
+      color: var(--bone);
+      border: 1px solid var(--ink);
+    }
+
+    .button-primary:hover,
+    .button-primary:focus-visible {
+      background: #51483e;
+      border-color: #51483e;
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid rgba(63, 56, 47, 0.22);
+    }
+
+    .button-secondary:hover,
+    .button-secondary:focus-visible {
+      border-color: rgba(159, 101, 74, 0.45);
+      color: var(--terracotta);
+    }
+
+    .footer {
+      padding: 26px 0 56px;
+      color: rgba(63, 56, 47, 0.74);
+      font-size: 0.95rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 20px;
+      border-top: 1px solid rgba(121, 98, 79, 0.12);
+    }
+
+    .field-notes-link {
+      color: var(--terracotta);
+      font-style: italic;
+    }
+
+    .secondary-link {
+      color: rgba(63, 56, 47, 0.84);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .gallery,
+      .services,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 500px;
+      }
+
+      .frame.large,
+      .frame.medium {
+        min-height: 340px;
+      }
+
+      .button-group {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .site-shell {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .quote-card,
+      .service-card,
+      .contact-panel {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="site-shell topbar-inner">
+      <a href="#top" class="brand" aria-label="diwa wellness home">
+        <span class="brand-mark">rest · ritual · return</span>
+        <span class="brand-name">diwa wellness</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#space">the space</a>
+        <a href="#offerings">offerings</a>
+        <a href="#visit">visit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="site-shell hero-grid">
+        <div>
+          <span class="eyebrow">small sacred space · martinsville, new jersey</span>
+          <h1>a soft place to land.</h1>
+          <p>
+            diwa is an intimate wellness studio shaped by warmth, quiet, texture, and care.
+            a space for nervous system exhale, grounded ritual, and gentle return to self.
+          </p>
+        </div>
+        <div class="hero-card" role="img" aria-label="Warm, earth-toned wellness space with linen textures and natural light.">
+          <div class="hero-card-note">
+            <strong>nothing to achieve, nothing to prove.</strong>
+            <span>just a slower room, softer light, and space to come back to yourself.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-band">
+      <div class="site-shell">
+        <div class="quote-card">
+          <p>
+            designed with clay tones, linen light, wood warmth, and a quietly held presence.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="space">
+      <div class="site-shell">
+        <div class="section-intro">
+          <h2>the studio</h2>
+          <p>
+            diwa draws from wabi sabi softness and elemental simplicity — draped fabric overhead,
+            earth-toned textiles, natural wood, and a calm that feels lived in rather than polished.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <figure class="frame large">
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1400&q=80" alt="Serene wellness interior with soft curtains and warm natural materials." />
+          </figure>
+          <div class="gallery-stack">
+            <figure class="frame medium">
+              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80" alt="Textural natural decor in warm neutral tones." />
+            </figure>
+            <figure class="frame medium">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Minimal earth-toned room with linen and wood details." />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="offerings">
+      <div class="site-shell">
+        <div class="section-intro">
+          <h2>what diwa holds</h2>
+          <p>
+            offerings can be shaped simply and intentionally, with language that stays open, grounded,
+            and respectful of each person’s own way of relating.
+          </p>
+        </div>
+
+        <div class="services">
+          <article class="service-card">
+            <h3>reiki sessions</h3>
+            <p>
+              gentle energetic support in a quiet, private setting intended to help the body soften and settle.
+            </p>
+          </article>
+          <article class="service-card">
+            <h3>restorative space</h3>
+            <p>
+              more than a treatment room — a place where environment, pacing, and attention are part of the offering.
+            </p>
+          </article>
+          <article class="service-card">
+            <h3>small ritual touches</h3>
+            <p>
+              warm textures, simple objects, and grounded sensory details that make the experience feel held.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visit">
+      <div class="site-shell">
+        <div class="contact-panel">
+          <div>
+            <h2>come by when you're ready.</h2>
+            <p>
+              whether you're curious, called, or simply in need of a softer hour, diwa welcomes you gently.
+            </p>
+          </div>
+          <div class="button-group">
+            <a class="button button-primary" href="mailto:studio@diwa.life">studio@diwa.life</a>
+            <a class="button button-secondary" href="#top">back to top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="site-shell footer-inner">
+      <div>diwa wellness</div>
+      <div>
+        also from diwa: <a class="field-notes-link" href="https://fieldnotesbakery.com" target="_blank" rel="noopener noreferrer">field notes bakery</a>,
+        a quiet little macaron bakery.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
