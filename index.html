@@ -285,7 +285,21 @@
       line-height: 1.7;
       color: var(--text-soft);
     }
-
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+    }
+    
+    .about-photo img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 6px;
+      object-fit: cover;
+      opacity: 0.92;
+    }
     .about-section {
       position: relative;
       padding: 88px 0 92px;
@@ -302,6 +316,18 @@
       font-size: clamp(2rem, 3vw, 3.3rem);
       line-height: 1.2;
       font-weight: 400;
+    }
+    
+    .approach-divider {
+      width: 120px;
+      height: 1px;
+      margin: 32px auto 20px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(105, 83, 63, 0.25),
+        transparent
+      );
     }
 
     .nav .button-primary {
@@ -459,6 +485,21 @@
     }
 
     @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    
+      .about-photo {
+        order: -1;
+        margin-bottom: 24px;
+      }
+    
+      .about-photo img {
+        max-width: 220px;
+      }
+    }
+
+    @media (max-width: 900px) {
       .topbar-inner,
       .value-grid,
       .bottom-link-inner {
@@ -597,7 +638,7 @@
     </div>
 
   </div>
-
+<div class="approach-divider"></div>
 <div class="approach-note">
   <p>
   minimal, unstructured sessions · shaped by what feels most supportive
@@ -612,14 +653,19 @@
         <div class="about-inner">
           <h2>about</h2>
           <div class="about-rule"></div>
-          <div class="about-copy">
-            <p>diwa is a quiet space for restoration and return.</p>
-            <p>it’s based on a simple belief: when people are given enough space, safety, and non-judgment, they naturally reconnect with their own clarity and energy.</p>
-            <p>i've always had a passion for creating environments where people can feel seen, settle, and access their own way forward. diwa is an extension of that intention, a more embodied approach</p>
-            <p>sessions are minimal and unstructured. there is nothing for you to achieve and nothing you need to believe in order to benefit. the work is not about fixing, but about allowing your system to settle and restore.</p>
-            <p>reiki is a gentle, non-invasive energy practice. it may involve light touch or hands just above the body, always with your consent. it is not massage or physical therapy. this work is rooted in the usui tradition.</p>
-
-            <p>you remain in control of your experience throughout.</p>
+          <div class="about-grid">
+            <div class="about-copy">
+              <p>diwa is a quiet space for restoration and return.</p>
+              <p>it’s based on a simple belief: when people are given enough space, safety, and non-judgment, they naturally reconnect with their own clarity and energy.</p>
+              <p>i've always had a passion for creating environments where people can feel seen, settle, and access their own way forward. diwa is an extension of that intention, a more embodied approach</p>
+              <p>sessions are minimal and unstructured. there is nothing for you to achieve and nothing you need to believe in order to benefit. the work is not about fixing, but about allowing your system to settle and restore.</p>
+              <p>reiki is a gentle, non-invasive energy practice. it may involve light touch or hands just above the body, always with your consent. it is not massage or physical therapy. this work is rooted in the usui tradition.</p>
+    
+              <p>you remain in control of your experience throughout.</p>
+            </div>
+            <div class="about-photo">
+              <img src="caryl-photo.png" alt="Caryl, Diwa Wellness practitioner">
+            </div>
           </div>
         </div>
       </section>
