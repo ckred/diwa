@@ -404,23 +404,33 @@
     }
 
     .practitioner {
-      padding: 60px 0 40px;
+      padding: 56px 0 48px;
+      background: #efe6db;
       text-align: center;
     }
-
+    
+    .practitioner-inner {
+      width: min(760px, calc(100% - 56px));
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
     .practitioner-inner img {
-      width: 180px;
-      height: 180px;
+      width: 156px;
+      height: 156px;
       object-fit: cover;
-      border-radius: 6px;
-      opacity: 0.95;
+      border-radius: 50%;
+      opacity: 0.92;
+      filter: sepia(0.14) saturate(0.85) contrast(0.95);
     }
     
     .practitioner-note {
-      margin-top: 12px;
+      margin: 14px 0 0;
       font-size: 0.85rem;
-      color: rgba(105, 83, 63, 0.6);
-      letter-spacing: 0.04em;
+      color: rgba(105, 83, 63, 0.62);
+      letter-spacing: 0.05em;
       text-transform: lowercase;
     }
 
