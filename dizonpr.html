@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Conquistador · Family Trip · July 5–9</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    /* Luxe tropical palette */
+    --ink:        #0f1f18;
+    --emerald:    #0d4a30;
+    --emerald-mid:#1a6b44;
+    --emerald-lt: #2d9660;
+    --jade:       #3ab87a;
+    --teal:       #0a7a8a;
+    --teal-lt:    #1aa8bc;
+    --azure:      #1478a8;
+    --peach:      #f07050;
+    --peach-lt:   #f89878;
+    --peach-pale: #fde8e0;
+    --cream:      #f4f8f2;
+    --cream-dk:   #e4ede0;
+    --sand:       #d8e8d4;
+    --sand-dk:    #a8c4a0;
+    --page:       #f2f7f0;
+    --card:       #ffffff;
+    --muted:      #5a7860;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--page); color: var(--ink); min-height: 100vh; font-weight: 300; }
+
+  /* ── HEADER ── */
+  header { color: white; padding: 0; position: relative; overflow: hidden; }
+
+  .header-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 120% at 110% 60%, rgba(58,184,122,0.28) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at -10% 80%, rgba(10,122,138,0.32) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 50% at 55% 0%, rgba(240,112,80,0.18) 0%, transparent 50%),
+      linear-gradient(145deg, #0a3d22 0%, #0d5c38 30%, #0e6e58 60%, #0a5a70 100%);
+  }
+
+  /* decorative tropical leaf shapes */
+  .header-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(ellipse 18% 45% at 92% 20%, rgba(45,150,96,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 12% 35% at 78% 8%, rgba(45,150,96,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 25% 25% at 5% 90%, rgba(10,122,138,0.3) 0%, transparent 70%),
+      radial-gradient(ellipse 15% 40% at 15% 70%, rgba(26,107,68,0.4) 0%, transparent 70%);
+  }
+
+  /* shimmer line */
+  .header-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      105deg,
+      transparent,
+      transparent 60px,
+      rgba(255,255,255,0.018) 60px,
+      rgba(255,255,255,0.018) 61px
+    );
+  }
+
+  .header-overlay {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(8,28,18,0.1) 0%, rgba(8,28,18,0.0) 50%, rgba(8,28,18,0.35) 100%);
+  }
+
+  .header-inner { position: relative; z-index: 1; padding: 2.8rem 2rem 0; max-width: 820px; margin: 0 auto; width: 100%; }
+
+  .eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase;
+    color: rgba(255,255,255,0.62); margin-bottom: 0.5rem;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-weight: 500; line-height: 1.05; color: #fff; margin-bottom: 0.3rem;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.25);
+  }
+  h1 em { font-style: italic; color: #f8c090; }
+
+  .header-sub {
+    font-size: 0.8rem; color: rgba(255,255,255,0.65);
+    letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+
+  .chips { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.9rem; }
+  .chip {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px; padding: 0.3rem 0.9rem;
+    font-size: 0.75rem; color: rgba(255,255,255,0.92);
+    backdrop-filter: blur(6px);
+  }
+  .chip b { color: #f8c090; font-weight: 500; }
+
+  .tabs-bar {
+    max-width: 820px; margin: 0 auto; display: flex;
+    position: relative; z-index: 1; overflow-x: auto;
+    background: rgba(8,40,24,0.45); backdrop-filter: blur(8px);
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    background: none; border: none; cursor: pointer;
+    font-family: 'Jost', sans-serif; font-size: 0.8rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); padding: 0.75rem 1.3rem 0.85rem;
+    border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap;
+  }
+  .tab-btn:hover { color: rgba(255,255,255,0.85); }
+  .tab-btn.active { color: #fff; border-bottom-color: #f07050; }
+
+  /* MAIN */
+  main { max-width: 820px; margin: 0 auto; padding: 0 1rem 4rem; }
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  .section-head { display: flex; align-items: baseline; gap: 0.6rem; margin: 2rem 0 0.9rem; }
+  .section-head h2 { font-family: 'Playfair Display', serif; font-weight: 500; font-size: 1.3rem; color: var(--emerald); white-space: nowrap; }
+  .section-head .line { flex: 1; height: 1px; background: var(--sand-dk); opacity: 0.6; }
+
+  /* ITINERARY */
+  .day-block { margin-bottom: 1.5rem; }
+  .day-label { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.55rem; flex-wrap: wrap; }
+  .day-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.85rem; color: var(--emerald-lt); width: 44px; flex-shrink: 0; }
+  .day-title { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
+  .day-date { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; }
+  .events { display: flex; flex-direction: column; gap: 0.4rem; }
+  .event {
+    background: var(--card); border-radius: 8px; border: 1px solid var(--sand);
+    border-left: 3px solid var(--jade); padding: 0.65rem 1rem;
+    display: grid; grid-template-columns: 56px 1fr; gap: 0.6rem; align-items: start;
+    transition: box-shadow 0.15s;
+  }
+  .event:hover { box-shadow: 0 2px 16px rgba(13,74,48,0.09); }
+  .event.coral { border-left-color: var(--peach); }
+  .event.gold  { border-left-color: #d4902a; }
+  .event.sky   { border-left-color: var(--teal-lt); }
+  .event.sand  { border-left-color: var(--sand-dk); }
+  .event.plum  { border-left-color: #9a6abf; }
+  .event-time { font-size: 0.67rem; color: var(--muted); padding-top: 2px; line-height: 1.3; }
+  .event-name { font-size: 0.88rem; font-weight: 500; line-height: 1.35; color: var(--ink); }
+  .event-note { font-size: 0.75rem; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+  .event-note a { color: var(--teal); text-decoration: none; }
+  .event-note a:hover { text-decoration: underline; }
+
+  /* ROOMS */
+  .rooms-intro { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.2rem; }
+  .rooms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+  @media (max-width: 540px) { .rooms-grid { grid-template-columns: 1fr; } }
+  .room-card { background: var(--card); border: 1px solid var(--sand); border-radius: 12px; overflow: hidden; }
+  .room-header { padding: 0.75rem 1rem 0.65rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+  .room-header.brisas { background: #e4f2ea; border-bottom: 1px solid #b8dcc4; }
+  .room-header.vistas { background: #e0eef6; border-bottom: 1px solid #aaccde; }
+  .room-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); }
+  .room-guest-ct { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+  .room-wing { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; padding: 0.18rem 0.6rem; border-radius: 100px; flex-shrink: 0; margin-top: 3px; }
+  .wing-brisas { background: var(--emerald); color: #b8ecd0; }
+  .wing-vistas { background: var(--teal); color: #aadfea; }
+  .room-body { padding: 0.8rem 1rem; }
+  .attendee-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .attendee { display: flex; align-items: center; gap: 0.55rem; font-size: 0.85rem; }
+  .avatar { width: 29px; height: 29px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 500; }
+  .av-moss  { background: #c8eedd; color: #0d4a2a; }
+  .av-sky   { background: #c8e8f4; color: #0a5070; }
+  .av-gold  { background: #fdeac8; color: #6a3c08; }
+  .av-coral { background: #fdddd4; color: #7a2010; }
+  .attendee-name { font-weight: 400; color: var(--ink); }
+  .attendee-note { font-size: 0.68rem; color: var(--peach); margin-left: auto; font-style: italic; }
+  .room-footer { font-size: 0.7rem; color: var(--muted); font-style: italic; padding: 0 1rem 0.7rem; }
+  .room-footer.confirmed { color: var(--emerald-mid); font-style: normal; font-weight: 500; }
+
+  /* LOGISTICS */
+  .info-card { background: var(--card); border: 1px solid var(--sand); border-radius: 10px; overflow: hidden; margin-bottom: 0.8rem; }
+  .info-row { display: grid; grid-template-columns: 180px 1fr; gap: 0.75rem; padding: 0.65rem 1rem; border-bottom: 1px solid var(--cream-dk); font-size: 0.83rem; align-items: start; }
+  .info-row:last-child { border-bottom: none; }
+  .info-lbl { color: var(--muted); }
+  .info-val { color: var(--ink); line-height: 1.5; }
+  .info-val.ph { color: var(--sand-dk); font-style: italic; }
+  .hl { background: #e8f5ee; }
+  .hl .info-lbl { color: var(--emerald-mid); font-weight: 500; }
+  .hl .info-val { font-weight: 500; }
+
+  .shuttle-card { background: var(--card); border: 1px solid var(--sand); border-left: 3px solid var(--jade); border-radius: 10px; padding: 1rem; margin-bottom: 0.8rem; }
+  .shuttle-card h3 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--emerald-mid); margin-bottom: 0.65rem; }
+  .shuttle-detail { font-size: 0.82rem; color: var(--ink); line-height: 1.8; }
+  .shuttle-detail strong { font-weight: 500; }
+  .shuttle-alert { font-size: 0.76rem; color: var(--peach); margin-top: 0.55rem; line-height: 1.5; padding-top: 0.5rem; border-top: 1px solid var(--peach-pale); }
+
+  .edit-form { background: var(--card); border: 1px solid var(--sand); border-radius: 10px; padding: 1rem; }
+  .edit-form h3 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  @media (max-width: 520px) { .form-grid { grid-template-columns: 1fr; } }
+  .form-grid input { width: 100%; border: 1px solid var(--sand); border-radius: 6px; padding: 0.45rem 0.7rem; font-family: 'Jost', sans-serif; font-size: 0.8rem; color: var(--ink); background: var(--cream); outline: none; transition: border-color 0.15s; }
+  .form-grid input::placeholder { color: var(--sand-dk); }
+  .form-grid input:focus { border-color: var(--jade); background: #fff; }
+  .save-btn { margin-top: 0.6rem; background: var(--emerald); color: white; border: none; border-radius: 6px; padding: 0.5rem 1.2rem; font-family: 'Jost', sans-serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
+  .save-btn:hover { background: var(--emerald-mid); }
+
+  /* PACKING */
+  .pack-progress { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1rem; font-size: 0.78rem; color: var(--muted); }
+  .progress-track { flex: 1; height: 5px; background: var(--sand); border-radius: 100px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--emerald-lt), var(--jade)); border-radius: 100px; transition: width 0.4s ease; width: 0%; }
+  .pack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+  @media (max-width: 520px) { .pack-grid { grid-template-columns: 1fr; } }
+  .pack-group { background: var(--card); border: 1px solid var(--sand); border-radius: 10px; padding: 0.85rem 1rem; }
+  .pack-cat { font-size: 0.66rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.55rem; display: flex; justify-content: space-between; }
+  .cat-count { font-weight: 300; color: var(--sand-dk); }
+  .pack-item { display: flex; align-items: center; gap: 0.55rem; padding: 0.28rem 0; cursor: pointer; font-size: 0.82rem; color: var(--ink); user-select: none; border-radius: 4px; }
+  .pack-item:hover { background: var(--cream-dk); margin: 0 -0.3rem; padding: 0.28rem 0.3rem; }
+  .pack-item input[type=checkbox] { accent-color: var(--emerald); width: 14px; height: 14px; cursor: pointer; flex-shrink: 0; }
+  .pack-item.done span { text-decoration: line-through; color: var(--sand-dk); }
+  .add-item-row { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .add-item-row select, .add-item-row input { border: 1px solid var(--sand); border-radius: 6px; padding: 0.42rem 0.7rem; font-family: 'Jost', sans-serif; font-size: 0.8rem; color: var(--ink); background: var(--cream); outline: none; }
+  .add-item-row select { width: 155px; }
+  .add-item-row input { flex: 1; min-width: 120px; }
+  .add-item-row input:focus, .add-item-row select:focus { border-color: var(--jade); background: #fff; }
+  .add-btn { background: var(--emerald); color: white; border: none; border-radius: 6px; padding: 0.42rem 0.9rem; font-family: 'Jost', sans-serif; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; }
+  .add-btn:hover { background: var(--emerald-mid); }
+
+  /* NOTES */
+  .notes-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 0.9rem; }
+  .note-card { background: var(--card); border: 1px solid var(--sand); border-radius: 10px; padding: 0.85rem 1rem; animation: fadeIn 0.2s ease; }
+  .note-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; }
+  .note-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: white; background: var(--jade); border-radius: 100px; padding: 0.15rem 0.6rem; }
+  .note-tag.reminder { background: #c8882a; }
+  .note-tag.health   { background: var(--peach); }
+  .note-tag.idea     { background: var(--teal); }
+  .note-tag.food     { background: var(--emerald-lt); }
+  .note-tag.budget   { background: var(--teal-lt); }
+  .note-tag.kids     { background: #9a6abf; }
+  .note-tag.todo     { background: var(--emerald); }
+  .note-author { font-size: 0.72rem; color: var(--muted); }
+  .note-text { font-size: 0.84rem; line-height: 1.6; color: var(--ink); }
+  .compose-card { background: var(--card); border: 1px solid var(--sand); border-radius: 10px; padding: 1rem; }
+  .compose-card h3 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
+  .compose-row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+  .compose-row select, .compose-row input { border: 1px solid var(--sand); border-radius: 6px; padding: 0.42rem 0.7rem; font-family: 'Jost', sans-serif; font-size: 0.8rem; color: var(--ink); background: var(--cream); outline: none; }
+  .compose-row select { width: 140px; }
+  .compose-row input { flex: 1; }
+  .compose-row select:focus, .compose-row input:focus { border-color: var(--jade); background: #fff; }
+  textarea.note-area { width: 100%; border: 1px solid var(--sand); border-radius: 6px; padding: 0.55rem 0.7rem; font-family: 'Jost', sans-serif; font-size: 0.82rem; color: var(--ink); background: var(--cream); resize: vertical; min-height: 80px; outline: none; margin-bottom: 0.5rem; }
+  textarea.note-area:focus { border-color: var(--jade); background: #fff; }
+  textarea.note-area::placeholder { color: var(--sand-dk); }
+  .post-btn { background: var(--emerald); color: white; border: none; border-radius: 6px; padding: 0.5rem 1.2rem; font-family: 'Jost', sans-serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
+  .post-btn:hover { background: var(--emerald-mid); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-bg"></div>
+  <div class="header-overlay"></div>
+  <div class="header-inner">
+    <p class="eyebrow">Family Trip Planner</p>
+    <h1>El <em>Conquistador</em></h1>
+    <p class="header-sub">Fajardo, Puerto Rico &nbsp;·&nbsp; July 5 – 9, 2026</p>
+    <div class="chips">
+      <span class="chip"><b id="countdown">–</b> days away</span>
+      <span class="chip">12 travelers</span>
+      <span class="chip">4 rooms</span>
+      <span class="chip">4 nights</span>
+      <span class="chip">🤿 Snorkel tour</span>
+      <span class="chip">🌴 Palomino Island</span>
+    </div>
+  </div>
+  <div class="tabs-bar">
+    <button class="tab-btn active" data-tab="itinerary">Itinerary</button>
+    <button class="tab-btn" data-tab="rooms">Rooms</button>
+    <button class="tab-btn" data-tab="logistics">Logistics</button>
+    <button class="tab-btn" data-tab="packing">Packing</button>
+    <button class="tab-btn" data-tab="notes">Notes</button>
+  </div>
+</header>
+
+<main>
+
+<!-- ══ ITINERARY ══ -->
+<div class="panel active" id="itinerary">
+
+  <div class="day-block">
+    <div class="day-label"><span class="day-num">Day 1</span><span class="day-title">Arrival</span><span class="day-date">Saturday, July 5</span></div>
+    <div class="events">
+      <div class="event sky">
+        <div class="event-time">9:46 AM</div>
+        <div><div class="event-name">✈️ Depart EWR → SJU</div><div class="event-note">United Airlines UA1556 · Newark Liberty (EWR) · arrives San Juan 1:45 PM</div></div>
+      </div>
+      <div class="event sky">
+        <div class="event-time">1:45 PM</div>
+        <div><div class="event-name">🛬 Arrive San Juan (SJU)</div><div class="event-note">Meet Puerto Rico Shuttle driver inside baggage claim holding a sign for Caryl Yuhas or "GO Puerto Rico Shuttle"</div></div>
+      </div>
+      <div class="event gold">
+        <div class="event-time">~2:00 PM</div>
+        <div><div class="event-name">🚐 Shuttle to El Conquistador</div><div class="event-note">Conf. VU77NC · Puerto Rico Shuttle · 12 passengers · ~1 hr drive · call (787) 400-2100 with issues</div></div>
+      </div>
+      <div class="event">
+        <div class="event-time">4:00 PM</div>
+        <div><div class="event-name">🏨 Check-in</div><div class="event-note">Rooms 1, 3 &amp; 4 → Las Brisas · Room 2 (Carlo &amp; Myla) → Las Vistas</div></div>
+      </div>
+      <div class="event sand">
+        <div class="event-time">Afternoon</div>
+        <div><div class="event-name">💦 Water Park — Camp Coquí &amp; resort explore</div><div class="event-note">Slides and splash pools for the kids · everyone settle in and enjoy the grounds</div></div>
+      </div>
+      <div class="event coral">
+        <div class="event-time">Evening</div>
+        <div><div class="event-name">🍽️ Welcome Family Dinner — Las Olas</div><div class="event-note">Everyone together · oceanfront restaurant at the resort</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-block">
+    <div class="day-label"><span class="day-num">Day 2</span><span class="day-title">Snorkel Adventure</span><span class="day-date">Sunday, July 6</span></div>
+    <div class="events">
+      <div class="event plum">
+        <div class="event-time">7:30 AM</div>
+        <div><div class="event-name">🤿 Snorkel Slide Boat Tour — Vieques</div><div class="event-note">Swim with sea turtles · early start, be ready! · <a href="https://snorkelingpuertorico.com/" target="_blank">snorkelingpuertorico.com</a></div></div>
+      </div>
+      <div class="event sand">
+        <div class="event-time">Afternoon</div>
+        <div><div class="event-name">🌴 Free time — rest &amp; decompress</div><div class="event-note">Pool, beach, nap — recover after the early morning on the water</div></div>
+      </div>
+      <div class="event gold">
+        <div class="event-time">4:00 PM</div>
+        <div><div class="event-name">🏰 Old San Juan</div><div class="event-note">~1 hr drive · Castillo San Felipe del Morro · colorful colonial streets · Calle Fortaleza · grab dinner or drinks in town</div></div>
+      </div>
+      <div class="event coral">
+        <div class="event-time">Evening</div>
+        <div><div class="event-name">🍽️ Dinner in Old San Juan (optional)</div><div class="event-note">Tons of great spots — or head back to the resort to eat there</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-block">
+    <div class="day-label"><span class="day-num">Day 3</span><span class="day-title">Palomino Island</span><span class="day-date">Monday, July 7</span></div>
+    <div class="events">
+      <div class="event">
+        <div class="event-time">Morning</div>
+        <div><div class="event-name">⛵ Ferry to Palomino Island</div><div class="event-note">Resort's private island · snorkel gear rental on-site · confirm ferry schedule at front desk</div></div>
+      </div>
+      <div class="event sand">
+        <div class="event-time">All day</div>
+        <div><div class="event-name">🏝️ Beach, swim &amp; explore</div><div class="event-note">Lunch at the Palomino Beach Bar</div></div>
+      </div>
+      <div class="event coral">
+        <div class="event-time">Evening</div>
+        <div><div class="event-name">🍽️ Family Dinner</div><div class="event-note">Everyone together — reserve a table in advance</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-block">
+    <div class="day-label"><span class="day-num">Day 4</span><span class="day-title">Jordan Farewell</span><span class="day-date">Tuesday, July 8</span></div>
+    <div class="events">
+      <div class="event gold">
+        <div class="event-time">Morning</div>
+        <div><div class="event-name">🥞 Family Breakfast + Jordan Send-Off</div><div class="event-note">Everyone gathers before Jordan departs — last morning together as a full group</div></div>
+      </div>
+      <div class="event sky">
+        <div class="event-time">1:25 PM</div>
+        <div><div class="event-name">✈️ Jordan departs SJU → EWR</div><div class="event-note">United Airlines UA1173 · arrives Newark 5:39 PM · safe travels, Jordan! 👋</div></div>
+      </div>
+      <div class="event sand">
+        <div class="event-time">Afternoon</div>
+        <div><div class="event-name">🌊 Last full day — enjoy the resort</div><div class="event-note">Pool, beach, spa, golf — make the most of it</div></div>
+      </div>
+      <div class="event gold">
+        <div class="event-time">Sunset</div>
+        <div><div class="event-name">🥂 Sunset drinks</div><div class="event-note">Pool bar or resort terrace · everyone together</div></div>
+      </div>
+      <div class="event coral">
+        <div class="event-time">Evening</div>
+        <div><div class="event-name">🍽️ Farewell Dinner</div><div class="event-note">Last night together — make a reservation early!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-block">
+    <div class="day-label"><span class="day-num">Day 5</span><span class="day-title">Departure</span><span class="day-date">Wednesday, July 9</span></div>
+    <div class="events">
+      <div class="event sand">
+        <div class="event-time">Morning</div>
+        <div><div class="event-name">☕ Breakfast &amp; pack individually</div><div class="event-note">Eat on your own schedule · pack the night before if possible · check-out by 11 AM · bell desk holds bags</div></div>
+      </div>
+      <div class="event gold">
+        <div class="event-time">10:30 AM</div>
+        <div><div class="event-name">📍 Meet at main entrance — shuttle pickup</div><div class="event-note">Conf. VU77NC · Puerto Rico Shuttle · 11 passengers · driver holds "GO PUERTO RICO SHUTTLE" sign</div></div>
+      </div>
+      <div class="event sky">
+        <div class="event-time">1:25 PM</div>
+        <div><div class="event-name">✈️ Depart SJU → EWR</div><div class="event-note">United Airlines UA1173 · arrives Newark 5:39 PM · see you back home! 🎉</div></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /itinerary -->
+
+<!-- ══ ROOMS ══ -->
+<div class="panel" id="rooms">
+
+  <div class="section-head" style="margin-top:1.5rem"><h2>Rooms &amp; Attendees</h2><div class="line"></div></div>
+  <p class="rooms-intro">12 travelers across 4 rooms. Room numbers are TBD — <strong>Carlo &amp; Myla</strong> are confirmed in <strong>Las Vistas</strong>; all other rooms are in <strong>Las Brisas</strong>.</p>
+
+  <div class="rooms-grid">
+
+    <div class="room-card">
+      <div class="room-header brisas">
+        <div><div class="room-name">Room 1</div><div class="room-guest-ct">4 guests</div></div>
+        <span class="room-wing wing-brisas">Las Brisas</span>
+      </div>
+      <div class="room-body">
+        <ul class="attendee-list">
+          <li class="attendee"><div class="avatar av-moss">GE</div><span class="attendee-name">Gemma</span></li>
+          <li class="attendee"><div class="avatar av-moss">GR</div><span class="attendee-name">Gerryl</span></li>
+          <li class="attendee"><div class="avatar av-moss">JD</div><span class="attendee-name">Jaedan</span></li>
+          <li class="attendee"><div class="avatar av-moss">JL</div><span class="attendee-name">Jilliana</span></li>
+        </ul>
+      </div>
+      <div class="room-footer">Room number TBD</div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-header vistas">
+        <div><div class="room-name">Room 2</div><div class="room-guest-ct">2 guests</div></div>
+        <span class="room-wing wing-vistas">Las Vistas</span>
+      </div>
+      <div class="room-body">
+        <ul class="attendee-list">
+          <li class="attendee"><div class="avatar av-sky">CA</div><span class="attendee-name">Carlo</span></li>
+          <li class="attendee"><div class="avatar av-sky">MY</div><span class="attendee-name">Myla</span></li>
+        </ul>
+      </div>
+      <div class="room-footer">Room number TBD</div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-header brisas">
+        <div><div class="room-name">Room 3</div><div class="room-guest-ct">2 guests</div></div>
+        <span class="room-wing wing-brisas">Las Brisas</span>
+      </div>
+      <div class="room-body">
+        <ul class="attendee-list">
+          <li class="attendee"><div class="avatar av-gold">IV</div><span class="attendee-name">Ivi</span></li>
+          <li class="attendee"><div class="avatar av-gold">GB</div><span class="attendee-name">Gabe</span></li>
+        </ul>
+      </div>
+      <div class="room-footer">Room number TBD</div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-header brisas">
+        <div><div class="room-name">Room 4</div><div class="room-guest-ct">4 guests</div></div>
+        <span class="room-wing wing-brisas">Las Brisas</span>
+      </div>
+      <div class="room-body">
+        <ul class="attendee-list">
+          <li class="attendee"><div class="avatar av-coral">CY</div><span class="attendee-name">Caryl</span></li>
+          <li class="attendee"><div class="avatar av-coral">JO</div><span class="attendee-name">Jordan</span><span class="attendee-note">departs Jul 8</span></li>
+          <li class="attendee"><div class="avatar av-coral">MW</div><span class="attendee-name">Marlowe</span></li>
+          <li class="attendee"><div class="avatar av-coral">DA</div><span class="attendee-name">Daphne</span></li>
+        </ul>
+      </div>
+      <div class="room-footer confirmed">Conf. # 9092209253100</div>
+    </div>
+
+  </div>
+
+  <div class="section-head" style="margin-top:1.8rem"><h2>Flight Summary</h2><div class="line"></div></div>
+  <div class="info-card">
+    <div class="info-row hl"><span class="info-lbl">Outbound — all 12</span><span class="info-val">UA1556 · Jul 5 · EWR 9:46 AM → SJU 1:45 PM</span></div>
+    <div class="info-row"><span class="info-lbl">Return — Jordan only</span><span class="info-val">UA1173 · Jul 8 · SJU 1:25 PM → EWR 5:39 PM</span></div>
+    <div class="info-row hl"><span class="info-lbl">Return — everyone else</span><span class="info-val">UA1173 · Jul 9 · SJU 1:25 PM → EWR 5:39 PM (11 travelers)</span></div>
+  </div>
+
+</div><!-- /rooms -->
+
+<!-- ══ LOGISTICS ══ -->
+<div class="panel" id="logistics">
+
+  <div class="section-head" style="margin-top:1.5rem"><h2>Flights</h2><div class="line"></div></div>
+  <div class="info-card">
+    <div class="info-row hl"><span class="info-lbl">Outbound · Jul 5</span><span class="info-val">UA1556 · EWR departs 9:46 AM → SJU arrives 1:45 PM · United Economy (T) · all 12 travelers</span></div>
+    <div class="info-row"><span class="info-lbl">Return · Jordan · Jul 8</span><span class="info-val">UA1173 · SJU departs 1:25 PM → EWR arrives 5:39 PM · Jordan departs a day early</span></div>
+    <div class="info-row hl"><span class="info-lbl">Return · everyone · Jul 9</span><span class="info-val">UA1173 · SJU departs 1:25 PM → EWR arrives 5:39 PM · United Economy (T) · 11 travelers</span></div>
+  </div>
+
+  <div class="section-head"><h2>Hotel</h2><div class="line"></div></div>
+  <div class="info-card">
+    <div class="info-row"><span class="info-lbl">Resort</span><span class="info-val">El Conquistador Resort, Autograph Collection</span></div>
+    <div class="info-row"><span class="info-lbl">Address</span><span class="info-val">1000 Avenida El Conquistador, Fajardo, PR 00738</span></div>
+    <div class="info-row"><span class="info-lbl">Check-in / out</span><span class="info-val">July 5 at 4:00 PM → July 9 at 11:00 AM</span></div>
+    <div class="info-row"><span class="info-lbl">Wings</span><span class="info-val">Las Brisas (Rooms 1, 3, 4) · Las Vistas (Room 2 — Carlo &amp; Myla)</span></div>
+    <div class="info-row"><span class="info-lbl">Confirmation #</span><span class="info-val ph" id="d-hconf">— not yet added</span></div>
+    <div class="info-row hl"><span class="info-lbl">Room 4 confirmation</span><span class="info-val">9092209253100 (Caryl, Jordan, Marlowe, Daphne)</span></div>
+    <div class="info-row"><span class="info-lbl">Resort phone</span><span class="info-val">(787) 863-1000</span></div>
+  </div>
+
+  <div class="section-head"><h2>Shuttle Transfer</h2><div class="line"></div></div>
+
+  <div class="shuttle-card">
+    <h3>Arrival — Reservation 1 of 2 · July 5</h3>
+    <div class="shuttle-detail">
+      <strong>Confirmation:</strong> VU77NC &nbsp;·&nbsp; <strong>Status:</strong> Confirmed<br>
+      <strong>Company:</strong> Puerto Rico Shuttle &nbsp;·&nbsp; <strong>Phone:</strong> (787) 400-2100 or (787) 640-6900<br>
+      <strong>Contact:</strong> Caryl Yuhas · (732) 740-9181<br>
+      <strong>Pickup:</strong> Sunday July 5 at 1:45 PM · Luis Muñoz Marín International Airport (SJU), baggage claim<br>
+      <strong>Drop-off:</strong> El Conquistador Resort, 1000 Avenida El Conquistador, Fajardo<br>
+      <strong>Flight:</strong> United Airlines 1556 &nbsp;·&nbsp; <strong>Passengers:</strong> 12 &nbsp;·&nbsp; <strong>Bags:</strong> 11 &nbsp;·&nbsp; <strong>Booster seats:</strong> 2 &nbsp;·&nbsp; <strong>Fare:</strong> $195.50
+    </div>
+    <div class="shuttle-alert">Driver meets you INSIDE baggage claim holding a sign for Caryl Yuhas or "GO Puerto Rico Shuttle." Cannot find driver? Call immediately: (787) 400-2100.</div>
+  </div>
+
+  <div class="shuttle-card">
+    <h3>Departure — Reservation 2 of 2 · July 9</h3>
+    <div class="shuttle-detail">
+      <strong>Confirmation:</strong> VU77NC &nbsp;·&nbsp; <strong>Status:</strong> Confirmed<br>
+      <strong>Company:</strong> Puerto Rico Shuttle &nbsp;·&nbsp; <strong>Phone:</strong> (787) 400-2100 or (787) 640-6900<br>
+      <strong>Contact:</strong> Caryl Yuhas · (732) 740-9181<br>
+      <strong>Pickup:</strong> Thursday July 9 at 10:30 AM · El Conquistador Resort, main entrance<br>
+      <strong>Drop-off:</strong> Luis Muñoz Marín International Airport (SJU)<br>
+      <strong>Flight:</strong> United Airlines 1173 (departs 1:25 PM) &nbsp;·&nbsp; <strong>Passengers:</strong> 11 &nbsp;·&nbsp; <strong>Bags:</strong> 10 &nbsp;·&nbsp; <strong>Booster seats:</strong> 2 &nbsp;·&nbsp; <strong>Fare:</strong> $191.50
+    </div>
+    <div class="shuttle-alert">Meet outside the hotel's MAIN ENTRANCE at 10:30 AM sharp — driver holds "GO PUERTO RICO SHUTTLE" sign. Contact shuttle at least 24 hrs before to confirm pickup. Jordan departs independently on July 8 and is NOT on this reservation.</div>
+  </div>
+
+  <div class="section-head"><h2>Update Details</h2><div class="line"></div></div>
+  <div class="edit-form">
+    <h3>Add room numbers when assigned</h3>
+    <div class="form-grid">
+      <input id="i-hconf" placeholder="Hotel confirmation #">
+      <input id="i-r1" placeholder="Room 1 number (Gemma, Gerryl…)">
+      <input id="i-r2" placeholder="Room 2 number (Carlo &amp; Myla)">
+      <input id="i-r3" placeholder="Room 3 number (Ivi &amp; Gabe)">
+      <input id="i-r4" placeholder="Room 4 number (Caryl, Jordan…)">
+      <input id="i-notes" placeholder="Other notes">
+    </div>
+    <button class="save-btn" onclick="saveLogistics()">Save</button>
+  </div>
+
+</div><!-- /logistics -->
+
+<!-- ══ PACKING ══ -->
+<div class="panel" id="packing">
+  <div class="section-head" style="margin-top:1.5rem"><h2>Packing List</h2><div class="line"></div></div>
+  <div class="pack-progress">
+    <span id="pack-label">0% packed</span>
+    <div class="progress-track"><div class="progress-fill" id="pack-fill"></div></div>
+  </div>
+  <div class="pack-grid" id="pack-grid"></div>
+  <div class="section-head" style="margin-top:1.2rem"><h2>Add Item</h2><div class="line"></div></div>
+  <div class="add-item-row">
+    <select id="new-cat">
+      <option>Beach &amp; Water</option>
+      <option>Clothing</option>
+      <option>Kids</option>
+      <option>Documents &amp; Money</option>
+      <option>Toiletries</option>
+      <option>Electronics</option>
+      <option>Other</option>
+    </select>
+    <input id="new-item" placeholder="Item name…" onkeydown="if(event.key==='Enter')addItem()">
+    <button class="add-btn" onclick="addItem()">Add</button>
+  </div>
+</div><!-- /packing -->
+
+<!-- ══ NOTES ══ -->
+<div class="panel" id="notes">
+  <div class="section-head" style="margin-top:1.5rem"><h2>Family Notes</h2><div class="line"></div></div>
+  <div class="notes-list" id="notes-list">
+    <div class="note-card">
+      <div class="note-header"><span class="note-tag reminder">Reminder</span></div>
+      <p class="note-text">Puerto Rico is a US territory — no passport required for US citizens, but everyone needs a valid government-issued photo ID. Check expiration dates now!</p>
+    </div>
+    <div class="note-card">
+      <div class="note-header"><span class="note-tag reminder">Reminder</span></div>
+      <p class="note-text">Jordan: your return is July 8 on UA1173 (SJU 1:25 PM). You'll need to arrange a separate transfer to the airport — you are NOT on the group shuttle (that's July 9).</p>
+    </div>
+    <div class="note-card">
+      <div class="note-header"><span class="note-tag kids">Kids</span></div>
+      <p class="note-text">The snorkel tour on July 6 departs at 7:30 AM — get kids to bed early on July 5! Motion sickness medication is strongly recommended for the boat ride to Vieques.</p>
+    </div>
+    <div class="note-card">
+      <div class="note-header"><span class="note-tag health">Health</span></div>
+      <p class="note-text">Pack reef-safe sunscreen SPF 50+, aloe vera, bug repellent, and all prescription meds for the full trip. Two booster seats are included in both shuttle bookings.</p>
+    </div>
+    <div class="note-card">
+      <div class="note-header"><span class="note-tag food">Food</span></div>
+      <p class="note-text">Resort restaurants fill up fast in July. Call (787) 863-1000 to reserve group dinners — especially the farewell dinner on July 8. Lunch on July 5 is on your own.</p>
+    </div>
+  </div>
+  <div class="compose-card">
+    <h3>Add a note</h3>
+    <div class="compose-row">
+      <select id="note-tag">
+        <option value="reminder">Reminder</option>
+        <option value="idea">Idea</option>
+        <option value="health">Health</option>
+        <option value="food">Food</option>
+        <option value="budget">Budget</option>
+        <option value="kids">Kids</option>
+        <option value="todo">To-do</option>
+      </select>
+      <input id="note-author" placeholder="Your name (optional)">
+    </div>
+    <textarea class="note-area" id="note-body" placeholder="Share something with the family…"></textarea>
+    <button class="post-btn" onclick="postNote()">Post note</button>
+  </div>
+</div><!-- /notes -->
+
+</main>
+
+<script>
+/* Tabs */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* Countdown */
+const diff = Math.ceil((new Date('2026-07-05T00:00:00') - new Date()) / 86400000);
+document.getElementById('countdown').textContent = diff > 0 ? diff : '🎉';
+
+/* Logistics */
+function saveLogistics() {
+  const hconf = document.getElementById('i-hconf').value.trim();
+  if (hconf) {
+    const el = document.getElementById('d-hconf');
+    if (el) { el.textContent = hconf; el.classList.remove('ph'); }
+  }
+  ['i-hconf','i-r1','i-r2','i-r3','i-r4','i-notes'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  alert('Details saved! Room numbers will appear once the hotel confirms assignments.');
+}
+
+/* Packing */
+const packData = {
+  'Beach & Water':     ['Swimsuits (×2 per person)','Reef-safe sunscreen SPF 50+','Snorkel mask & fins','Rashguard','Beach towel','Waterproof sandals','Dry bag / waterproof pouch','Kids floaties or swim vest'],
+  'Clothing':          ['Lightweight shorts & dresses','1 nicer outfit for dinner','Comfortable walking shoes','Sandals','Light layer for A/C','Pajamas','Rain jacket (just in case)'],
+  'Kids':              ['Sunhat for kids','Sand toys & bucket','Portable first-aid kit','Favorite comfort item','Motion sickness meds (boat!)'],
+  'Documents & Money': ['Valid photo ID — all travelers','Hotel confirmation printout','Flight boarding passes','Credit card (no foreign fees)','Emergency contact list','Shuttle conf. VU77NC printout'],
+  'Toiletries':        ['Toothbrush & toothpaste','Aloe vera gel','Bug repellent','Shampoo / conditioner','Hair ties','Hand sanitizer','Motion sickness tabs'],
+  'Electronics':       ['Phone chargers & cables','Power bank','Camera or GoPro','Waterproof phone case'],
+  'Other':             ['Reusable water bottles','Airport snacks','All prescription meds (full trip)','Book or e-reader','Small day-pack or tote']
+};
+const checked = {};
+
+function renderPacking() {
+  const grid = document.getElementById('pack-grid');
+  grid.innerHTML = '';
+  Object.entries(packData).forEach(([cat, items]) => {
+    const done = items.filter(i => checked[cat+'|'+i]).length;
+    const g = document.createElement('div');
+    g.className = 'pack-group';
+    g.innerHTML = `<div class="pack-cat">${cat}<span class="cat-count">${done}/${items.length}</span></div>`;
+    items.forEach(item => {
+      const key = cat + '|' + item;
+      const lbl = document.createElement('label');
+      lbl.className = 'pack-item' + (checked[key] ? ' done' : '');
+      const safeKey = key.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+      lbl.innerHTML = `<input type="checkbox" ${checked[key]?'checked':''} onchange="togglePack('${safeKey}',this)"><span>${item}</span>`;
+      g.appendChild(lbl);
+    });
+    grid.appendChild(g);
+  });
+  updateProgress();
+}
+
+function togglePack(key, cb) {
+  checked[key] = cb.checked;
+  cb.checked ? cb.parentElement.classList.add('done') : cb.parentElement.classList.remove('done');
+  updateProgress();
+}
+
+function updateProgress() {
+  const all = document.querySelectorAll('.pack-item input');
+  const total = all.length, done = [...all].filter(c => c.checked).length;
+  const pct = total ? Math.round(done / total * 100) : 0;
+  document.getElementById('pack-label').textContent = pct + '% packed';
+  document.getElementById('pack-fill').style.width = pct + '%';
+}
+
+function addItem() {
+  const cat = document.getElementById('new-cat').value;
+  const item = document.getElementById('new-item').value.trim();
+  if (!item) return;
+  if (!packData[cat]) packData[cat] = [];
+  packData[cat].push(item);
+  document.getElementById('new-item').value = '';
+  renderPacking();
+}
+
+renderPacking();
+
+/* Notes */
+function postNote() {
+  const tag = document.getElementById('note-tag').value;
+  const author = document.getElementById('note-author').value.trim();
+  const body = document.getElementById('note-body').value.trim();
+  if (!body) return;
+  const card = document.createElement('div');
+  card.className = 'note-card';
+  card.innerHTML = `<div class="note-header"><span class="note-tag ${tag}">${tag[0].toUpperCase()+tag.slice(1)}</span>${author?`<span class="note-author">— ${author}</span>`:''}</div><p class="note-text">${body.replace(/</g,'&lt;')}</p>`;
+  document.getElementById('notes-list').appendChild(card);
+  document.getElementById('note-body').value = '';
+}
+</script>
+</body>
+</html>
