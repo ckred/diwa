@@ -251,7 +251,29 @@
   textarea.note-area:focus { border-color: var(--jade); background: #fff; }
   textarea.note-area::placeholder { color: var(--sand-dk); }
   .post-btn { background: var(--emerald); color: white; border: none; border-radius: 6px; padding: 0.5rem 1.2rem; font-family: 'Jost', sans-serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
-  .post-btn:hover { background: var(--emerald-mid); }
+  /* ── RSVP ── */
+  .rsvp-block { margin-top: 0.55rem; border-top: 1px solid var(--cream-dk); padding-top: 0.5rem; }
+  .rsvp-label { font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.38rem; }
+  .rsvp-pills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .rsvp-pill {
+    display: flex; align-items: center; gap: 0.3rem;
+    border: 1.5px solid var(--sand); border-radius: 100px;
+    padding: 0.22rem 0.65rem 0.22rem 0.45rem;
+    font-size: 0.72rem; color: var(--muted); cursor: pointer;
+    transition: all 0.15s; user-select: none; background: var(--cream);
+    white-space: nowrap;
+  }
+  .rsvp-pill:hover { border-color: var(--jade); color: var(--emerald); }
+  .rsvp-pill.in {
+    background: var(--emerald); border-color: var(--emerald);
+    color: #fff;
+  }
+  .rsvp-pill.in .pip { background: rgba(255,255,255,0.5); }
+  .pip {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--sand-dk); flex-shrink: 0; transition: background 0.15s;
+  }
+  .rsvp-count { font-size: 0.68rem; color: var(--muted); margin-left: 0.15rem; font-style: italic; }
 </style>
 </head>
 <body>
@@ -287,7 +309,7 @@
 <div class="panel active" id="itinerary">
 
   <div class="day-block">
-    <div class="day-label"><span class="day-num">Day 1</span><span class="day-title">Arrival</span><span class="day-date">Saturday, July 5</span></div>
+    <div class="day-label"><span class="day-num">Day 1</span><span class="day-title">Arrival</span><span class="day-date">Sunday, July 5</span></div>
     <div class="events">
       <div class="event sky">
         <div class="event-time">9:46 AM</div>
@@ -317,11 +339,18 @@
   </div>
 
   <div class="day-block">
-    <div class="day-label"><span class="day-num">Day 2</span><span class="day-title">Snorkel Adventure</span><span class="day-date">Sunday, July 6</span></div>
+    <div class="day-label"><span class="day-num">Day 2</span><span class="day-title">Snorkel Adventure</span><span class="day-date">Monday, July 6</span></div>
     <div class="events">
       <div class="event plum">
         <div class="event-time">7:30 AM</div>
-        <div><div class="event-name">🤿 Snorkel Slide Boat Tour — Vieques</div><div class="event-note">Swim with sea turtles · early start, be ready! · <a href="https://snorkelingpuertorico.com/" target="_blank">snorkelingpuertorico.com</a></div></div>
+        <div>
+          <div class="event-name">🤿 Snorkel Slide Boat Tour — Vieques</div>
+          <div class="event-note">Swim with sea turtles · early start, be ready! · <a href="https://snorkelingpuertorico.com/" target="_blank">snorkelingpuertorico.com</a></div>
+          <div class="rsvp-block">
+            <div class="rsvp-label">Who's in? <span class="rsvp-count" id="snorkel-count"></span></div>
+            <div class="rsvp-pills" id="snorkel-pills"></div>
+          </div>
+        </div>
       </div>
       <div class="event sand">
         <div class="event-time">Afternoon</div>
@@ -329,21 +358,35 @@
       </div>
       <div class="event gold">
         <div class="event-time">4:00 PM</div>
-        <div><div class="event-name">🏰 Old San Juan</div><div class="event-note">~1 hr drive · Castillo San Felipe del Morro · colorful colonial streets · Calle Fortaleza · grab dinner or drinks in town</div></div>
+        <div>
+          <div class="event-name">🏰 Old San Juan</div>
+          <div class="event-note">~1 hr drive · Castillo San Felipe del Morro · colorful colonial streets · Calle Fortaleza · grab dinner or drinks in town</div>
+          <div class="rsvp-block">
+            <div class="rsvp-label">Who's in? <span class="rsvp-count" id="sanjuan-count"></span></div>
+            <div class="rsvp-pills" id="sanjuan-pills"></div>
+          </div>
+        </div>
       </div>
       <div class="event coral">
         <div class="event-time">Evening</div>
-        <div><div class="event-name">🍽️ Dinner in Old San Juan (optional)</div><div class="event-note">Tons of great spots — or head back to the resort to eat there</div></div>
+        <div><div class="event-name">🍽️ Dinner in Old San Juan <span style="font-weight:300;font-size:0.8rem">(optional)</span></div><div class="event-note">Location TBD — plenty of great spots in the area</div></div>
       </div>
     </div>
   </div>
 
   <div class="day-block">
-    <div class="day-label"><span class="day-num">Day 3</span><span class="day-title">Palomino Island</span><span class="day-date">Monday, July 7</span></div>
+    <div class="day-label"><span class="day-num">Day 3</span><span class="day-title">Palomino Island</span><span class="day-date">Tuesday, July 7</span></div>
     <div class="events">
       <div class="event">
         <div class="event-time">Morning</div>
-        <div><div class="event-name">⛵ Ferry to Palomino Island</div><div class="event-note">Resort's private island · snorkel gear rental on-site · confirm ferry schedule at front desk</div></div>
+        <div>
+          <div class="event-name">⛵ Ferry to Palomino Island</div>
+          <div class="event-note">Resort's private island · snorkel gear rental on-site · confirm ferry schedule at front desk</div>
+          <div class="rsvp-block">
+            <div class="rsvp-label">Who's in? <span class="rsvp-count" id="palomino-count"></span></div>
+            <div class="rsvp-pills" id="palomino-pills"></div>
+          </div>
+        </div>
       </div>
       <div class="event sand">
         <div class="event-time">All day</div>
@@ -357,7 +400,7 @@
   </div>
 
   <div class="day-block">
-    <div class="day-label"><span class="day-num">Day 4</span><span class="day-title">Jordan Farewell</span><span class="day-date">Tuesday, July 8</span></div>
+    <div class="day-label"><span class="day-num">Day 4</span><span class="day-title">Jordan Farewell</span><span class="day-date">Wednesday, July 8</span></div>
     <div class="events">
       <div class="event gold">
         <div class="event-time">Morning</div>
@@ -383,7 +426,7 @@
   </div>
 
   <div class="day-block">
-    <div class="day-label"><span class="day-num">Day 5</span><span class="day-title">Departure</span><span class="day-date">Wednesday, July 9</span></div>
+    <div class="day-label"><span class="day-num">Day 5</span><span class="day-title">Departure</span><span class="day-date">Thursday, July 9</span></div>
     <div class="events">
       <div class="event sand">
         <div class="event-time">Morning</div>
@@ -704,7 +747,48 @@ function addItem() {
 
 renderPacking();
 
-/* Notes */
+/* ── RSVP ── */
+const people = [
+  { name: 'Gemma',    initials: 'GE' },
+  { name: 'Gerryl',   initials: 'GR' },
+  { name: 'Jaedan',   initials: 'JD' },
+  { name: 'Jilliana', initials: 'JL' },
+  { name: 'Carlo',    initials: 'CA' },
+  { name: 'Myla',     initials: 'MY' },
+  { name: 'Ivi',      initials: 'IV' },
+  { name: 'Gabe',     initials: 'GB' },
+  { name: 'Caryl',    initials: 'CY' },
+  { name: 'Jordan',   initials: 'JO' },
+  { name: 'Marlowe',  initials: 'MW' },
+  { name: 'Daphne',   initials: 'DA' },
+];
+
+const rsvpState = { snorkel: new Set(), palomino: new Set(), sanjuan: new Set() };
+
+function buildRsvp(eventKey) {
+  const pillsEl = document.getElementById(eventKey + '-pills');
+  const countEl = document.getElementById(eventKey + '-count');
+  if (!pillsEl) return;
+  pillsEl.innerHTML = '';
+  people.forEach(p => {
+    const isIn = rsvpState[eventKey].has(p.name);
+    const pill = document.createElement('button');
+    pill.className = 'rsvp-pill' + (isIn ? ' in' : '');
+    pill.innerHTML = `<span class="pip"></span>${p.name}`;
+    pill.title = isIn ? `Remove ${p.name}` : `Add ${p.name}`;
+    pill.onclick = () => {
+      if (rsvpState[eventKey].has(p.name)) rsvpState[eventKey].delete(p.name);
+      else rsvpState[eventKey].add(p.name);
+      buildRsvp(eventKey);
+    };
+    pillsEl.appendChild(pill);
+  });
+  const n = rsvpState[eventKey].size;
+  countEl.textContent = n === 0 ? '' : `— ${n} of 12`;
+}
+
+['snorkel', 'palomino', 'sanjuan'].forEach(k => buildRsvp(k));
+
 function postNote() {
   const tag = document.getElementById('note-tag').value;
   const author = document.getElementById('note-author').value.trim();
