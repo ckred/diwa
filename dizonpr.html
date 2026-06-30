@@ -384,6 +384,10 @@
         <div class="event-time">All day</div>
         <div><div class="event-name">🏝️ Beach, swim &amp; explore</div><div class="event-note">Lunch at the Palomino Beach Bar</div></div>
       </div>
+      <div class="event plum">
+        <div class="event-time">6:30 PM</div>
+        <div><div class="event-name">📸 Family Beach Photo Op</div><div class="event-note">Wear neutrals! · golden hour on the beach · everyone together before dinner</div></div>
+      </div>
       <div class="event coral">
         <div class="event-time">Evening</div>
         <div><div class="event-name">🍽️ Family Dinner</div><div class="event-note">Everyone together — reserve a table in advance</div></div>
@@ -716,6 +720,7 @@ function renderPacking() {
 function togglePack(key, cb) {
   checked[key] = cb.checked;
   cb.checked ? cb.parentElement.classList.add('done') : cb.parentElement.classList.remove('done');
+  savePackState();
   updateProgress();
 }
 
@@ -737,49 +742,92 @@ function addItem() {
   renderPacking();
 }
 
+function savePackState() {
+  try { localStorage.setItem('dizon_pack', JSON.stringify(checked)); } catch(e) {}
+}
+
+function loadPackState() {
+  try {
+    const raw = localStorage.getItem('dizon_pack');
+    if (raw) Object.assign(checked, JSON.parse(raw));
+  } catch(e) {}
+}
+
+loadPackState();
 renderPacking();
 
-/* ── RSVP ── */
+/* ── RSVP — Supabase backend ── */
+const SB_URL = 'https://kqvergzpzvrsqmjyegcd.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtxdmVyZ3pwenZyc3FtanllZ2NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4NDg1MTEsImV4cCI6MjA5ODQyNDUxMX0.qG0NL1S2-6qSqFygintzAMkVxWUyrCcWkBx3iOL8anY';
+const SB_HEADERS = { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json' };
+
 const people = [
-  { name: 'Gemma',    initials: 'GE' },
-  { name: 'Gerryl',   initials: 'GR' },
-  { name: 'Jaedan',   initials: 'JD' },
-  { name: 'Jilliana', initials: 'JL' },
-  { name: 'Carlo',    initials: 'CA' },
-  { name: 'Myla',     initials: 'MY' },
-  { name: 'Ivi',      initials: 'IV' },
-  { name: 'Gabe',     initials: 'GB' },
-  { name: 'Caryl',    initials: 'CY' },
-  { name: 'Jordan',   initials: 'JO' },
-  { name: 'Marlowe',  initials: 'MW' },
-  { name: 'Daphne',   initials: 'DA' },
+  'Gemma','Gerryl','Jaedan','Jilliana',
+  'Carlo','Myla',
+  'Ivi','Gabe',
+  'Caryl','Jordan','Marlowe','Daphne',
 ];
 
+const RSVP_EVENTS = ['snorkel', 'palomino', 'sanjuan'];
 const rsvpState = { snorkel: new Set(), palomino: new Set(), sanjuan: new Set() };
+
+async function fetchRsvp() {
+  try {
+    const res = await fetch(`${SB_URL}/rest/v1/rsvp?select=event,name`, { headers: SB_HEADERS });
+    const rows = await res.json();
+    RSVP_EVENTS.forEach(k => rsvpState[k] = new Set());
+    rows.forEach(r => { if (rsvpState[r.event]) rsvpState[r.event].add(r.name); });
+  } catch(e) { console.warn('RSVP fetch failed', e); }
+}
+
+async function toggleRsvp(eventKey, name) {
+  const isIn = rsvpState[eventKey].has(name);
+  if (isIn) {
+    // optimistic
+    rsvpState[eventKey].delete(name);
+    buildRsvp(eventKey);
+    await fetch(`${SB_URL}/rest/v1/rsvp?event=eq.${eventKey}&name=eq.${encodeURIComponent(name)}`, {
+      method: 'DELETE', headers: SB_HEADERS
+    });
+  } else {
+    rsvpState[eventKey].add(name);
+    buildRsvp(eventKey);
+    await fetch(`${SB_URL}/rest/v1/rsvp`, {
+      method: 'POST',
+      headers: { ...SB_HEADERS, 'Prefer': 'resolution=ignore-duplicates' },
+      body: JSON.stringify({ event: eventKey, name })
+    });
+  }
+}
 
 function buildRsvp(eventKey) {
   const pillsEl = document.getElementById(eventKey + '-pills');
   const countEl = document.getElementById(eventKey + '-count');
   if (!pillsEl) return;
   pillsEl.innerHTML = '';
-  people.forEach(p => {
-    const isIn = rsvpState[eventKey].has(p.name);
+  people.forEach(name => {
+    const isIn = rsvpState[eventKey].has(name);
     const pill = document.createElement('button');
     pill.className = 'rsvp-pill' + (isIn ? ' in' : '');
-    pill.innerHTML = `<span class="pip"></span>${p.name}`;
-    pill.title = isIn ? `Remove ${p.name}` : `Add ${p.name}`;
-    pill.onclick = () => {
-      if (rsvpState[eventKey].has(p.name)) rsvpState[eventKey].delete(p.name);
-      else rsvpState[eventKey].add(p.name);
-      buildRsvp(eventKey);
-    };
+    pill.innerHTML = `<span class="pip"></span>${name}`;
+    pill.onclick = () => toggleRsvp(eventKey, name);
     pillsEl.appendChild(pill);
   });
   const n = rsvpState[eventKey].size;
   countEl.textContent = n === 0 ? '' : `— ${n} of 12`;
 }
 
-['snorkel', 'palomino', 'sanjuan'].forEach(k => buildRsvp(k));
+async function initRsvp() {
+  // show skeleton while loading
+  RSVP_EVENTS.forEach(k => {
+    const el = document.getElementById(k + '-pills');
+    if (el) el.innerHTML = '<span style="font-size:0.75rem;color:var(--muted);font-style:italic">Loading…</span>';
+  });
+  await fetchRsvp();
+  RSVP_EVENTS.forEach(k => buildRsvp(k));
+}
+
+initRsvp();
 
 function postNote() {
   const tag = document.getElementById('note-tag').value;
